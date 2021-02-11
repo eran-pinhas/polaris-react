@@ -115,7 +115,9 @@ describe('<Tabs />', () => {
       );
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('panelID')).toBe(
+          tab.panelID,
+        );
       });
     });
 
@@ -151,7 +153,9 @@ describe('<Tabs />', () => {
       );
 
       urlTabs.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('url'),
+        ).toStrictEqual(tab.url);
       });
     });
 
@@ -181,9 +185,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('children')).toStrictEqual(
-          tab.content,
-        );
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('children'),
+        ).toStrictEqual(tab.content);
       });
     });
 
@@ -204,9 +208,9 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find('ul').find(Tab).at(index).prop('children')).toStrictEqual(
-          tab.content,
-        );
+        expect(
+          wrapper.find('ul').find(Tab).at(index).prop('children'),
+        ).toStrictEqual(tab.content);
       });
     });
   });
