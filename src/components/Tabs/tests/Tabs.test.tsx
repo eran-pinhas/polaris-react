@@ -98,7 +98,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} tabs={tabs} />);
 
       tabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('id')).toBe(tab.id);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('id')).toBe(tab.id);
       });
     });
 
@@ -115,7 +115,7 @@ describe('<Tabs />', () => {
       );
 
       panelIDedTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('panelID')).toBe(tab.panelID);
       });
     });
 
@@ -126,7 +126,7 @@ describe('<Tabs />', () => {
       );
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find(Tab).at(index).prop('panelID');
+        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
         expect(typeof panelID).toBe('string');
         expect(panelID).not.toBe('');
       });
@@ -136,7 +136,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(<Tabs {...mockProps} />);
 
       tabs.forEach((_, index) => {
-        const panelID = wrapper.find(Tab).at(index).prop('panelID');
+        const panelID = wrapper.find('ul').find(Tab).at(index).prop('panelID');
         expect(panelID).toBeUndefined();
       });
     });
@@ -151,7 +151,7 @@ describe('<Tabs />', () => {
       );
 
       urlTabs.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
+        expect(wrapper.find('ul').find(Tab).at(index).prop('url')).toStrictEqual(tab.url);
       });
     });
 
@@ -166,7 +166,7 @@ describe('<Tabs />', () => {
 
       labelledTabs.forEach((tab, index) => {
         expect(
-          wrapper.find(Tab).at(index).prop('accessibilityLabel'),
+          wrapper.find('ul').find(Tab).at(index).prop('accessibilityLabel'),
         ).toStrictEqual(tab.accessibilityLabel);
       });
     });
@@ -181,7 +181,7 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+        expect(wrapper.find('ul').find(Tab).at(index).prop('children')).toStrictEqual(
           tab.content,
         );
       });
@@ -204,7 +204,7 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find(Tab).at(index).prop('children')).toStrictEqual(
+        expect(wrapper.find('ul').find(Tab).at(index).prop('children')).toStrictEqual(
           tab.content,
         );
       });
@@ -267,7 +267,7 @@ describe('<Tabs />', () => {
         <Tabs {...mockProps}>{content}</Tabs>,
       );
 
-      const selectedTab = wrapper.find(Tab).at(0);
+      const selectedTab = wrapper.find('ul').find(Tab).at(0);
       const panel = wrapper.find(Panel).at(0);
       expect(panel.exists()).toBe(true);
       expect(panel.contains(content)).toBe(true);
@@ -288,7 +288,7 @@ describe('<Tabs />', () => {
       );
 
       const panel = wrapper.find(Panel).at(0);
-      const selectedTab = wrapper.find(Tab).at(0);
+      const selectedTab = wrapper.find('ul').find(Tab).at(0);
       expect(panel.prop('id')).toBe(selectedTab.prop('panelID'));
     });
   });
@@ -299,7 +299,7 @@ describe('<Tabs />', () => {
       const wrapper = mountWithAppProvider(
         <Tabs {...mockProps} onSelect={spy} />,
       );
-      wrapper.find(Tab).at(1).find('button').simulate('click');
+      wrapper.find('ul').find(Tab).at(1).find('button').simulate('click');
       expect(spy).toHaveBeenCalledWith(1);
     });
   });
